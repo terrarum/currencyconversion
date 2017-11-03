@@ -1,0 +1,17 @@
+{
+  "name": "currency",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest --watchAll --coverage"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^21.2.1"
+  }
+}
