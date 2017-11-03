@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jest": "^21.2.1"
+    "jest": "^21.2.1",
+    "node-fetch": "^1.7.3"
   }
 }

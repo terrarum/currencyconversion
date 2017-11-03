@@ -1,5 +1,8 @@
 const inputParser = require('../src/inputParser');
 
+const defaultExpectedAmount = 100;
+const defaultExpectedCurrency = 'GBP';
+
 const validInputs = [
   '100 GBP',
   '100 gbp',
@@ -13,47 +16,38 @@ const validInputs = [
   {
     request: '100.5GBP',
     expectedAmount: 100.5,
-    expectedCurrency: 'GBP',
   },
   {
     request: '$100',
-    expectedAmount: 100,
     expectedCurrency: 'USD',
   },
   {
     request: '€100',
-    expectedAmount: 100,
     expectedCurrency: 'EUR',
   },
   {
     request: '1,000,000 GBP',
     expectedAmount: 1000000,
-    expectedCurrency: 'GBP',
   },
   {
     request: '-1,000,000 GBP',
     expectedAmount: 1000000,
-    expectedCurrency: 'GBP',
   },
   {
     request: '-85.49GBP',
     expectedAmount: 85.49,
-    expectedCurrency: 'GBP',
   },
   {
     request: '-85.49 GBP',
     expectedAmount: 85.49,
-    expectedCurrency: 'GBP',
   },
   {
     request: '85.49GBP',
     expectedAmount: 85.49,
-    expectedCurrency: 'GBP',
   },
   {
     request: '85.49 GBP',
     expectedAmount: 85.49,
-    expectedCurrency: 'GBP',
   },
 ];
 
@@ -87,9 +81,9 @@ const invalidOld = [
 validInputs.forEach((testValues) => {
 
   // Convert into object with defaults if necessary.
-  testValues = testValues.request === undefined ? { request: testValues } : testValues;
-  testValues.expectedAmount = testValues.expectedAmount === undefined ? 100 : testValues.expectedAmount;
-  testValues.expectedCurrency = testValues.expectedCurrency === undefined ? 'GBP' : testValues.expectedCurrency;
+  testValues = testValues.request === undefined ? {request: testValues} : testValues;
+  testValues.expectedAmount = testValues.expectedAmount === undefined ? defaultExpectedAmount : testValues.expectedAmount;
+  testValues.expectedCurrency = testValues.expectedCurrency === undefined ? defaultExpectedCurrency : testValues.expectedCurrency;
 
   // Run test.
   test(`Should parse '${testValues}' correctly`, () => {
