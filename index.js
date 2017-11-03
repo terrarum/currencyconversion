@@ -1,10 +1,18 @@
 const inputParser = require('./src/inputParser');
 const getConversionRates = require('./src/getConversionRates');
 
-const request = `${process.argv[2]} ${process.argv[3]}`;
+const arg1 = process.argv[2];
+const arg2 = process.argv[3] === undefined ? '' : process.argv[3];
+
+const request = `${arg1} ${arg2}`.trim();
+
+// TODO test consistent input.
+
 const parsedRequest = inputParser.parse(request);
 const requestedAmount = parsedRequest.amount;
 const baseSymbol = parsedRequest.currency;
+
+console.log(requestedAmount, baseSymbol);
 
 // Build list of symbols; exclude requested symbol if in list.
 const symbols = [
