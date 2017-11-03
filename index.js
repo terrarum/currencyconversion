@@ -20,6 +20,8 @@ const processResults = function (results) {
   let rates = null;
   let btcRate = null;
 
+  // TODO handle unexpected responses.
+
   results.forEach((result) => {
     if (result.source === 'fixer') {
       rates = result.response.rates;

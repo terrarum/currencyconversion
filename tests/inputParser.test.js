@@ -51,7 +51,7 @@ const validInputs = [
   },
 ];
 
-const invalidOld = [
+const invalidInputs = [
   'Infinity GBP',
   '100gbp100',
   'gbp-100gbp',
@@ -95,7 +95,7 @@ validInputs.forEach((testValues) => {
 });
 
 // Test invalid input.
-invalidOld.forEach((value) => {
+invalidInputs.forEach((value) => {
   test(`Should halt on invalid format '${value}'`, () => {
     const parsedInput = inputParser.parse(value);
     expect(parsedInput.error).not.toBeNull();
